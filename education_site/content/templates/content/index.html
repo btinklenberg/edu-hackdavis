@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <html lang="en">
-  <title>EduPortal - Home</title>
-  <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" type="text/stylesheet" href="styles.css">
-</head>
+{% extends 'content/base.html' %}
+{% block albums_active %}active{% endblock %}
 
-<body>
-  <header>
-    <div class = "search-ui">
-      <img src="images/searchui.png" alt="search">
-    </div>
-    <!--search bar-->
-    <input type="text" name="search" placeholder="Search..">
-  </header>
-
+{% block body %}
   <section class="highlights">
     <!-- insert highlight reel code here -->
     <!-- should be scrollable -->
 
-    <div><button id="seemore"><a href="#popup-fox">see more photos of this project</a></button></div>
     <div id="popup-fox" class="modal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -34,11 +14,12 @@
               <a href="#" class="closebutton">×</a>
             </header>
             <div class="w3-content w3-section" style="max-width:500px">
-              <img class="mySlides" src="images/fox-1.jpg" style="width: 100%">
-              <img class="mySlides" src="images/fox-2.jpg" style="width: 100%">
-              <img class="mySlides" src="images/fox-3.jpg" style="width:100%">
-              <img class="mySlides" src="images/fox-4.jpg" style="width:100%">
-              <img class="mySlides" src="images/fox-5.jpg" style="width:100%">
+              {% load static %}
+              <img class="mySlides" src="{% static '/content/images/stonehenge.jpg'%}" style="width: 100%">
+              <img class="mySlides" src="{% static '/content/images/history.jpg'%}" style="width: 100%">
+              <img class="mySlides" src="{% static '/content/images/uk.jpg'%}" style="width:100%">
+              <img class="mySlides" src="{% static '/content/images/puritans.jpg'%}" style="width:100%">
+              <img class="mySlides" src="{% static '/content/images/egypt.jpg'%}" style="width:100%">
             </div>
             <!-- Button Java  -->
             <script>
@@ -72,12 +53,12 @@
   <div class="discover">
     <h3>DISCOVER BY...</h3>
     <button class="b-subject">
-    <h2><a href="#">Subject</a></h2>
+    <h2><a href="/content/subject">Subject</a></h2>
   </button>
     <button class="b-issue" href="#">
     <h2><a href="#">Tips</a></h2>
   </button>
   </div>
-</body>
 
-</html>
+{% endblock %}
+
