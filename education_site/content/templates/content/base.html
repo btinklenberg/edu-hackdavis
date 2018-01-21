@@ -1,0 +1,41 @@
+
+<DOCTYPE! HTML>
+<head>
+    <meta charset="utf-8">
+    <html lang="en">
+    <title>EduPortal - Home</title>
+    {% load staticfiles %}
+      <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'content/style.css' %}"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar">
+    <div class="container-fluid">
+        <!-- header -->
+        <div class="navbar-header">
+
+            <div class = "search-ui">
+              {% load static %}
+              <img src="{% static '/content/images/searchui.png'%}" alt="search">
+        </div>
+            
+            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'content:index'%}">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="q" placeholder="Search.." value="{{ request.GET.q }}">
+                    <input type="submit" style="display: none;">
+                </div>
+            </form>
+        
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>

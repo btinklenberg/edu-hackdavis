@@ -1,0 +1,50 @@
+{% extends 'content/base.html' %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<head>
+  <meta charset="utf-8">
+  <html lang="en">
+  <title>EduPortal - Subject</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="{% static 'content/resultstyle.css' %}"/>
+</head>
+
+<nav>
+    <!-- <form>
+      <form class="form-inline" action="/action_page.php">
+  <div class="form-group">
+    <label for="subject">I'm looking for</label>
+    <input type="input" class="form-control" id="subject">
+  </div>
+  <h1> in </h1>
+  <div class="form-group">
+    <label for="school-level">school level</label>
+    <input type="input" class="form-control" id="school-level">
+    <h1> school.</h1>
+  </div>
+  <button type="submit" class="btn">Go</button>
+</form>
+  </nav> -->
+
+  <!-- Portfolio  -->
+  <div class="search-results">
+    <h1>History in Middle School</h1>
+        <div class="content">
+              {% load static %}
+          <a id="item1" href="#"><img src="{% static '/content/images/stonehenge.jpg'%}" alt="article image"></a>
+          <a id="item2" href="#"><img src="{% static '/content/images/history.jpg'%}" alt="article image"></a>
+          <a id="item3" href="#"><img src="{% static '/content/images/uk.jpg'%}" alt="article image"></a>
+          <a id="item4" href="#"><img src="{% static '/content/images/puritans.jpg'%}" alt="article image"></a>
+          <a id="item5" href="#"><img src="{% static '/content/images/egypt.jpg'%}"alt="article image"></a>
+          <a id="item6" href="#"><img src="{% static '/content/images/history-two.jpg'%}" alt="article image"></a>
+        </div>
+  </div>
+</nav>
+
+{% endblock %}

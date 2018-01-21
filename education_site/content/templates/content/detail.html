@@ -1,0 +1,71 @@
+{% extends 'content/base.html' %}
+{% block title %}{{ subject }}{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid songs-container">
+
+    <div class="row">
+
+        <!-- Left Album Info -->
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h1>{{ subject.subject_title }} <small>{{ subject.level }}</small></h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Song Info -->
+        <div class="col-sm-8 col-md-9">
+
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'content:detail' subject.id %}">View All</a></li>
+                <li role="presentation"><a href="{% url 'content:create_subject' subject.id %}">Add New Subject</a></li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <h3>All Subjects</h3>
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Article</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for article in subject.subject_set.all %}
+                            <tr>
+                                <td>{{ subject.subject_title }}</td>
+                                <td>{{ article.article_title }}</td>
+                                <td>
+                                    <form action="{% url 'content:delete_subject' subject.id article.id %}" method="post" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="song_id" value="{{ article.id }}" />
+                                        <button type="submit" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-remove"></span>&nbsp; Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
